@@ -4,6 +4,7 @@ from insertion_sort import InsertionSort
 from selection_sort import SelectionSort
 from shellsort import ShellSort
 from merge_sort import DescendingMergeSort, AscendingMergeSort
+from qsort import QSort
 
 
 class ShellSortTests(unittest.TestCase):
@@ -101,6 +102,25 @@ class AscendingMergeSortTests(unittest.TestCase):
         self.assertEqual(example.isSorted(), True)
 
 
+class QSortTests(unittest.TestCase):
+
+    def test_basic(self):
+        example = QSort([5, 4, 3, 2, 1])
+        example.sort()
+        self.assertEqual(example.isSorted(), True)
+
+    def test_one_elem(self):
+        example = QSort([1])
+        example.sort()
+        self.assertEqual(example.isSorted(), True)
+
+    def test_random_thousand_elements(self):
+        lst = [random.randint(0, 1000) for x in range(1000)]
+        example = QSort(lst)
+        example.sort()
+        self.assertEqual(example.isSorted(), True)
+
+
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ShellSortTests))
@@ -108,6 +128,7 @@ def suite():
     suite.addTest(unittest.makeSuite(InsertionSortTests))
     suite.addTest(unittest.makeSuite(DescendingMergeSortTests))
     suite.addTest(unittest.makeSuite(AscendingMergeSortTests))
+    suite.addTest(unittest.makeSuite(QSortTests))
     return suite
 
 if __name__ == "__main__":
