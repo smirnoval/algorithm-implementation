@@ -131,6 +131,7 @@ def suite():
     suite.addTest(unittest.makeSuite(QSortTests))
     return suite
 
+
 if __name__ == "__main__":
     runner = unittest.TextTestRunner()
     runner.run(suite())
